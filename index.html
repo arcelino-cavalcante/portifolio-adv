@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr.ª Ana Rute Cordeiro - Advocacia</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Custom Styles - Paleta Vinho, Bege e Dourado */
+        :root {
+            --cor-vinho: #5D1A2A;
+            --cor-dourado: #D4AF37;
+            --cor-dourado-hover: #c09b2d;
+            --cor-bege-claro: #F3EAD3;
+            --cor-bege-fundo: #EFEBE0;
+            --cor-texto-escuro: #3d2c21;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--cor-texto-escuro);
+            background-color: var(--cor-bege-fundo);
+            line-height: 1.8;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+        }
+
+        /* Parallax Base Style */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Hero Parallax Section */
+        .parallax-hero {
+            background-image: url(imagens/image.png);
+            min-height: 100vh;
+        }
+
+        /* Second Parallax Section */
+        .parallax-quote {
+            background-image: url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop");
+            min-height: 50vh;
+        }
+
+        .parallax-overlay {
+            background-color: rgba(93, 26, 42, 0.7);
+            /* Overlay com a cor vinho */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .section-title {
+            color: var(--cor-vinho);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+            color: var(--cor-texto-escuro);
+        }
+
+        .nav-link {
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link:hover {
+            color: var(--cor-dourado);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--cor-dourado);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--cor-bege-claro);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .cta-button {
+            background-color: var(--cor-dourado);
+            color: white;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
+            background-color: var(--cor-dourado-hover);
+            transform: scale(1.05);
+        }
+
+        /* --- Estilos da Linha do Tempo Interativa --- */
+        .timeline-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            cursor: grab;
+        }
+
+        .timeline-container:active {
+            cursor: grabbing;
+        }
+
+        .timeline-container::before,
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 10rem;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .timeline-container::before {
+            left: 0;
+            background: linear-gradient(to right, var(--cor-bege-fundo), rgba(239, 235, 224, 0));
+        }
+
+        .timeline-container::after {
+            right: 0;
+            background: linear-gradient(to left, var(--cor-bege-fundo), rgba(239, 235, 224, 0));
+        }
+
+        .timeline-track {
+            display: flex;
+            width: max-content;
+            transition: transform 0.5s ease-out;
+            will-change: transform;
+        }
+
+        .timeline-item {
+            width: 300px;
+            flex-shrink: 0;
+            padding: 2rem 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #d1c7b8;
+            top: 2rem;
+            left: 0;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            left: 1.5rem;
+            transform: translate(-50%, -50%);
+            width: 18px;
+            height: 18px;
+            background-color: var(--cor-dourado);
+            border-radius: 50%;
+            border: 4px solid var(--cor-bege-claro);
+            z-index: 1;
+        }
+
+        .timeline-year {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--cor-vinho);
+            position: relative;
+            padding-left: 25px;
+            line-height: 1;
+        }
+
+        .timeline-content {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--cor-bege-claro);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            position: relative;
+            min-height: 170px;
+            /* Garante altura mínima uniforme */
+            display: flex;
+            /* Habilita flexbox */
+            flex-direction: column;
+            /* Organiza conteúdo em coluna */
+            justify-content: center;
+            /* Centraliza o conteúdo verticalmente */
+        }
+
+        .timeline-content h3 {
+            color: var(--cor-vinho);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: var(--cor-texto-escuro);
+        }
+    </style>
+</head>
+
+<body style="background-color: var(--cor-bege-fundo);">
+
+    <!-- Header Navigation -->
+    <header id="navbar"
+        class="bg-white/80 backdrop-blur-md shadow-md fixed w-full top-0 left-0 z-50 transition-all duration-300"
+        style="background-color: rgba(243, 234, 211, 0.8);">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold" style="color: var(--cor-vinho);">Dr.ª Ana Rute Cordeiro</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#sobre" class="nav-link font-semibold" style="color: var(--cor-texto-escuro);">Sobre</a>
+                <a href="#formacao" class="nav-link font-semibold" style="color: var(--cor-texto-escuro);">Formação</a>
+                <a href="#atuacao" class="nav-link font-semibold" style="color: var(--cor-texto-escuro);">Atuação</a>
+                <a href="#filosofia" class="nav-link font-semibold"
+                    style="color: var(--cor-texto-escuro);">Filosofia</a>
+                <a href="#contato" class="nav-link font-semibold" style="color: var(--cor-texto-escuro);">Contato</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none" style="color: var(--cor-vinho);">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden" style="background-color: var(--cor-bege-claro);">
+            <a href="#sobre" class="block py-2 px-4 text-sm hover:bg-gray-200">Sobre</a>
+            <a href="#formacao" class="block py-2 px-4 text-sm hover:bg-gray-200">Formação</a>
+            <a href="#atuacao" class="block py-2 px-4 text-sm hover:bg-gray-200">Áreas de Atuação</a>
+            <a href="#filosofia" class="block py-2 px-4 text-sm hover:bg-gray-200">Filosofia</a>
+            <a href="#contato" class="block py-2 px-4 text-sm hover:bg-gray-200">Contato</a>
+        </div>
+    </header>
+
+    <!-- Hero Parallax Section -->
+    <section class="parallax-section parallax-hero flex items-center justify-center text-white">
+        <div class="parallax-overlay"></div>
+        <div class="text-center z-10 p-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-wider">Ana Rute Cordeiro</h1>
+            <p class="text-xl md:text-3xl font-light text-gray-200">Advocacia com Paixão e Compromisso</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Sobre Section -->
+        <section id="sobre" class="py-20" style="background-color: var(--cor-bege-claro);">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Sobre Mim</h2>
+                <p class="section-subtitle">Uma nova perspectiva na advocacia, focada em soluções modernas e eficientes.
+                </p>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/3">
+                        <img src="imagens/perfil.jpg" alt="Retrato da Advogada Ana Rute Cordeiro"
+                            class="rounded-lg shadow-2xl w-full">
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="mb-4">Recém-formada em Direito, sou uma advogada apaixonada e dedicada, comprometida
+                            em oferecer uma advocacia moderna e acessível. Minha abordagem é pautada pela energia e pelo
+                            conhecimento atualizado das mais recentes teses e jurisprudências.</p>
+                        <p class="mb-4">Integrando a equipe de um conceituado escritório de advocacia, alio o vigor da
+                            minha recente formação com a sólida experiência da firma para defender os interesses dos
+                            meus clientes com máxima diligência, ética e combatividade.</p>
+                        <p>Acredito em uma advocacia humanizada, onde cada cliente recebe atenção plena e soluções
+                            jurídicas personalizadas para seus desafios. Meu objetivo é ser sua maior aliada na busca
+                            por justiça.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção da Linha do Tempo Acadêmica -->
+        <section id="formacao" class="py-20">
+            <div class="container mx-auto">
+                <h2 class="section-title">Formação Acadêmica</h2>
+                <p class="section-subtitle px-6">Uma base sólida para uma prática jurídica de excelência.</p>
+                <div class="timeline-container">
+                    <div class="timeline-track">
+                        <!-- Itens da Linha do Tempo (simplificados) -->
+                        <div class="timeline-item">
+                            <div class="timeline-year">2023</div>
+                            <div class="timeline-content">
+                                <h3>Graduação em Direito</h3>
+                                <p>Universidade (substituir pelo nome)</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024</div>
+                            <div class="timeline-content">
+                                <h3>Aprovação na OAB</h3>
+                                <p>Início da jornada profissional</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">Atual</div>
+                            <div class="timeline-content">
+                                <h3>Advogada Associada</h3>
+                                <p>Atuação em escritório de advocacia</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">Futuro</div>
+                            <div class="timeline-content">
+                                <h3>Pós-Graduação</h3>
+                                <p>Busca por especialização contínua</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Áreas de Atuação Section -->
+        <section id="atuacao" class="py-20" style="background-color: var(--cor-bege-claro);">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Áreas de Atuação</h2>
+                <p class="section-subtitle">Assessoria jurídica especializada, com o suporte de uma equipe experiente.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card p-8 rounded-lg shadow-lg text-center">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito Civil</h3>
+                        <p>Contratos, responsabilidade civil, família, sucessões e questões imobiliárias.</p>
+                    </div>
+                    <div class="card p-8 rounded-lg shadow-lg text-center">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito Empresarial</h3>
+                        <p>Consultoria, contratos sociais, fusões e aquisições.</p>
+                    </div>
+                    <div class="card p-8 rounded-lg shadow-lg text-center">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito do Trabalho</h3>
+                        <p>Defesa dos direitos de empregados e empregadores, consultoria e contencioso.</p>
+                    </div>
+                    <div class="card p-8 rounded-lg shadow-lg text-center">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito Tributário</h3>
+                        <p>Planejamento, defesa em execuções fiscais e recuperação de créditos.</p>
+                    </div>
+                    <div class="card p-8 rounded-lg shadow-lg text-center">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito do Consumidor</h3>
+                        <p>Atuação em casos de práticas abusivas, produtos com defeito e serviços.</p>
+                    </div>
+                    <div class="card p-8 rounded-lg shadow-lg text-center">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Consultoria Estratégica
+                        </h3>
+                        <p>Análise de riscos e pareceres jurídicos para decisões seguras.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Second Parallax Section -->
+        <section class="parallax-section parallax-quote flex items-center justify-center text-white">
+            <div class="parallax-overlay"></div>
+            <div class="text-center z-10 p-4 max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-light italic">"A justiça consiste em dar a cada um o que é seu."
+                </h2>
+                <p class="text-xl font-semibold mt-2">- Ulpiano</p>
+            </div>
+        </section>
+
+        <!-- Filosofia de Trabalho Section -->
+        <section id="filosofia" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Filosofia de Trabalho</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="p-8 rounded-lg"
+                        style="background-color: var(--cor-bege-claro); border-left: 4px solid var(--cor-dourado);">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Dedicação Total ao Cliente
+                        </h3>
+                        <p class="italic">Cada caso é tratado com a máxima atenção e cuidado, buscando entender a fundo
+                            as necessidades individuais para construir a melhor estratégia jurídica.</p>
+                    </div>
+                    <div class="p-8 rounded-lg"
+                        style="background-color: var(--cor-bege-claro); border-left: 4px solid var(--cor-dourado);">
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Ética e Transparência</h3>
+                        <p class="italic">Acredito em uma relação de confiança mútua, mantendo o cliente sempre
+                            informado sobre cada etapa do processo com clareza, honestidade e sem juridiquês.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato Section -->
+        <section id="contato" class="py-20" style="background-color: var(--cor-bege-claro);">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Entre em Contato</h2>
+                <p class="section-subtitle">Vamos conversar sobre como posso ajudá-lo. Envie uma mensagem ou utilize um
+                    dos canais abaixo.</p>
+
+                <!-- Canais de Contato -->
+                <div class="max-w-xl mx-auto mb-10 flex flex-col sm:flex-row justify-center gap-8">
+                    <a href="https://wa.me/5587981620121" target="_blank"
+                        class="flex items-center gap-3 text-lg font-semibold hover:text-[var(--cor-dourado)] transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M19.11 4.9C17.22 3 14.76 2 12 2C6.48 2 2 6.48 2 12C2 13.77 2.5 15.44 3.34 16.9L2.05 22L7.1 20.66C8.56 21.5 10.23 22 12 22H12.01C17.52 22 21.99 17.52 21.99 12C21.99 9.24 21 6.78 19.11 4.9ZM12 20.01C10.37 20.01 8.8 19.54 7.47 18.65L7.18 18.47L4.54 19.11L5.19 16.54L4.99 16.26C4.19 14.93 3.75 13.47 3.75 12C3.75 7.44 7.44 3.75 12 3.75C14.21 3.75 16.2 4.63 17.79 6.22C19.38 7.81 20.25 9.8 20.25 12C20.25 16.56 16.56 20.25 12.01 20.25L12 20.01ZM16.54 14.99C16.3 14.87 15.2 14.38 14.98 14.3C14.75 14.21 14.58 14.18 14.42 14.42C14.25 14.66 13.72 15.29 13.55 15.47C13.38 15.64 13.22 15.67 12.97 15.55C12.72 15.42 11.66 15.08 10.38 13.98C9.33 13.08 8.69 12.08 8.53 11.84C8.37 11.6 8.48 11.48 8.6 11.36C8.71 11.25 8.87 11.06 9.03 10.9C9.18 10.74 9.24 10.62 9.33 10.46C9.42 10.3 9.37 10.17 9.31 10.05C9.25 9.93 8.69 8.54 8.47 8C8.24 7.46 8.02 7.55 7.85 7.54H7.4C7.17 7.54 6.95 7.59 6.76 7.83C6.57 8.07 6 8.69 6 10.15C6 11.61 6.77 13.01 6.93 13.22C7.09 13.42 8.69 15.93 11.25 16.96C11.83 17.2 12.28 17.34 12.64 17.43C13.16 17.55 13.68 17.52 14.05 17.43C14.48 17.32 15.53 16.73 15.75 16.13C15.97 15.53 15.97 15.04 15.9 14.92C15.83 14.8 15.61 14.74 15.36 14.62" />
+                        </svg>
+                        (87) 98162-0121
+                    </a>
+                    <a href="mailto:anarutecordeiro.adv"
+                        class="flex items-center gap-3 text-lg font-semibold hover:text-[var(--cor-dourado)] transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
+                        </svg>
+                        anarutecordeiro.adv
+                    </a>
+                </div>
+
+                <form class="max-w-xl mx-auto p-8 rounded-lg shadow-md"
+                    style="background-color: var(--cor-bege-fundo);">
+                    <div class="mb-4"><label for="name" class="block text-sm font-bold mb-2">Nome</label><input
+                            type="text" id="name" name="name"
+                            class="shadow-sm appearance-none border rounded w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2"
+                            style="background-color: var(--cor-bege-claro); border-color: #d1c7b8; --tw-ring-color: var(--cor-dourado);"
+                            required></div>
+                    <div class="mb-4"><label for="email" class="block text-sm font-bold mb-2">Email</label><input
+                            type="email" id="email" name="email"
+                            class="shadow-sm appearance-none border rounded w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2"
+                            style="background-color: var(--cor-bege-claro); border-color: #d1c7b8; --tw-ring-color: var(--cor-dourado);"
+                            required></div>
+                    <div class="mb-6"><label for="message"
+                            class="block text-sm font-bold mb-2">Mensagem</label><textarea id="message" name="message"
+                            rows="5"
+                            class="shadow-sm appearance-none border rounded w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2"
+                            style="background-color: var(--cor-bege-claro); border-color: #d1c7b8; --tw-ring-color: var(--cor-dourado);"
+                            required></textarea></div>
+                    <div class="text-center"><button type="submit"
+                            class="cta-button py-3 px-8 rounded-full text-lg">Enviar Mensagem</button></div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-white py-10" style="background-color: var(--cor-vinho);">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Dr.ª Ana Rute Cordeiro. Todos os direitos reservados.</p>
+            <p class="text-sm text-gray-300 mt-2">Desenvolvido com excelência</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbar = document.getElementById('navbar');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Change navbar style on scroll
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('py-2', 'shadow-lg');
+                    navbar.classList.remove('py-3');
+                } else {
+                    navbar.classList.remove('py-2', 'shadow-lg');
+                    navbar.classList.add('py-3');
+                }
+            });
+
+            // Lógica da Linha do Tempo Interativa
+            const timelineContainer = document.querySelector('.timeline-container');
+            if (timelineContainer) {
+                const timelineTrack = timelineContainer.querySelector('.timeline-track');
+                timelineContainer.addEventListener('mousemove', function (e) {
+                    if (!timelineTrack || !timelineContainer) return;
+                    const trackWidth = timelineTrack.scrollWidth;
+                    const containerWidth = timelineContainer.offsetWidth;
+                    const maxScroll = trackWidth - containerWidth;
+                    if (maxScroll <= 0) return;
+                    const mouseX = e.pageX - timelineContainer.getBoundingClientRect().left;
+                    const scrollPercentage = mouseX / containerWidth;
+                    const newX = -maxScroll * scrollPercentage;
+                    timelineTrack.style.transform = `translateX(${newX}px)`;
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
