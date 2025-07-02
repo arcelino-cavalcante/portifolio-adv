@@ -77,7 +77,6 @@
 
         .section-title {
             color: var(--cor-vinho);
-            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             text-align: center;
         }
@@ -154,7 +153,8 @@
             content: '';
             position: absolute;
             top: 0;
-            width: 10rem;
+            width: 5rem;
+            /* Reduzido para telas menores */
             height: 100%;
             z-index: 2;
             pointer-events: none;
@@ -244,7 +244,8 @@
         }
 
         .timeline-content p {
-            font-size: 0.9rem;
+            font-size: 1rem;
+            /* Aumentado para melhor leitura */
             color: var(--cor-texto-escuro);
         }
     </style>
@@ -257,7 +258,8 @@
         class="bg-white/80 backdrop-blur-md shadow-md fixed w-full top-0 left-0 z-50 transition-all duration-300"
         style="background-color: rgba(243, 234, 211, 0.8);">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold" style="color: var(--cor-vinho);">Dr.ª Ana Rute Cordeiro</a>
+            <a href="#" class="text-xl sm:text-2xl font-bold" style="color: var(--cor-vinho);">Dr.ª Ana Rute
+                Cordeiro</a>
             <nav class="hidden md:flex space-x-8">
                 <a href="#sobre" class="nav-link font-semibold" style="color: var(--cor-texto-escuro);">Sobre</a>
                 <a href="#formacao" class="nav-link font-semibold" style="color: var(--cor-texto-escuro);">Formação</a>
@@ -289,7 +291,7 @@
         <div class="parallax-overlay"></div>
         <div class="text-center z-10 p-4">
             <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-wider">Ana Rute Cordeiro</h1>
-            <p class="text-xl md:text-3xl font-light text-gray-200">Advocacia com Paixão e Compromisso</p>
+            <p class="text-2xl md:text-3xl font-light text-gray-200">Advocacia com Paixão e Compromisso</p>
         </div>
     </section>
 
@@ -298,15 +300,15 @@
         <!-- Sobre Section -->
         <section id="sobre" class="py-20" style="background-color: var(--cor-bege-claro);">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">Sobre Mim</h2>
-                <p class="section-subtitle">Uma nova perspectiva na advocacia, focada em soluções modernas e eficientes.
-                </p>
+                <h2 class="section-title text-3xl sm:text-4xl">Sobre Mim</h2>
+                <p class="section-subtitle text-base md:text-lg">Uma nova perspectiva na advocacia, focada em soluções
+                    modernas e eficientes.</p>
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <div class="md:w-1/3">
                         <img src="imagens/perfil.jpg" alt="Retrato da Advogada Ana Rute Cordeiro"
                             class="rounded-lg shadow-2xl w-full">
                     </div>
-                    <div class="md:w-2/3">
+                    <div class="md:w-2/3 text-base md:text-lg">
                         <p class="mb-4">Recém-formada em Direito, sou uma advogada apaixonada e dedicada, comprometida
                             em oferecer uma advocacia moderna e acessível. Minha abordagem é pautada pela energia e pelo
                             conhecimento atualizado das mais recentes teses e jurisprudências.</p>
@@ -324,8 +326,9 @@
         <!-- Seção da Linha do Tempo Acadêmica -->
         <section id="formacao" class="py-20">
             <div class="container mx-auto">
-                <h2 class="section-title">Formação Acadêmica</h2>
-                <p class="section-subtitle px-6">Uma base sólida para uma prática jurídica de excelência.</p>
+                <h2 class="section-title text-3xl sm:text-4xl">Formação Acadêmica</h2>
+                <p class="section-subtitle px-6 text-base md:text-lg">Uma base sólida para uma prática jurídica de
+                    excelência.</p>
                 <div class="timeline-container">
                     <div class="timeline-track">
                         <!-- Itens da Linha do Tempo (simplificados) -->
@@ -365,34 +368,36 @@
         <!-- Áreas de Atuação Section -->
         <section id="atuacao" class="py-20" style="background-color: var(--cor-bege-claro);">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">Áreas de Atuação</h2>
-                <p class="section-subtitle">Assessoria jurídica especializada, com o suporte de uma equipe experiente.
-                </p>
+                <h2 class="section-title text-3xl sm:text-4xl">Áreas de Atuação</h2>
+                <p class="section-subtitle text-base md:text-lg">Assessoria jurídica especializada, com o suporte de uma
+                    equipe experiente.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="card p-8 rounded-lg shadow-lg text-center">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito Civil</h3>
-                        <p>Contratos, responsabilidade civil, família, sucessões e questões imobiliárias.</p>
+                        <p class="text-base">Contratos, responsabilidade civil, família, sucessões e questões
+                            imobiliárias.</p>
                     </div>
                     <div class="card p-8 rounded-lg shadow-lg text-center">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito Empresarial</h3>
-                        <p>Consultoria, contratos sociais, fusões e aquisições.</p>
+                        <p class="text-base">Consultoria, contratos sociais, fusões e aquisições.</p>
                     </div>
                     <div class="card p-8 rounded-lg shadow-lg text-center">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito do Trabalho</h3>
-                        <p>Defesa dos direitos de empregados e empregadores, consultoria e contencioso.</p>
+                        <p class="text-base">Defesa dos direitos de empregados e empregadores, consultoria e
+                            contencioso.</p>
                     </div>
                     <div class="card p-8 rounded-lg shadow-lg text-center">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito Tributário</h3>
-                        <p>Planejamento, defesa em execuções fiscais e recuperação de créditos.</p>
+                        <p class="text-base">Planejamento, defesa em execuções fiscais e recuperação de créditos.</p>
                     </div>
                     <div class="card p-8 rounded-lg shadow-lg text-center">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito do Consumidor</h3>
-                        <p>Atuação em casos de práticas abusivas, produtos com defeito e serviços.</p>
+                        <p class="text-base">Atuação em casos de práticas abusivas, produtos com defeito e serviços.</p>
                     </div>
                     <div class="card p-8 rounded-lg shadow-lg text-center">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Consultoria Estratégica
                         </h3>
-                        <p>Análise de riscos e pareceres jurídicos para decisões seguras.</p>
+                        <p class="text-base">Análise de riscos e pareceres jurídicos para decisões seguras.</p>
                     </div>
                 </div>
             </div>
@@ -411,20 +416,21 @@
         <!-- Filosofia de Trabalho Section -->
         <section id="filosofia" class="py-20">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">Filosofia de Trabalho</h2>
+                <h2 class="section-title text-3xl sm:text-4xl">Filosofia de Trabalho</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div class="p-8 rounded-lg"
                         style="background-color: var(--cor-bege-claro); border-left: 4px solid var(--cor-dourado);">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Dedicação Total ao Cliente
                         </h3>
-                        <p class="italic">Cada caso é tratado com a máxima atenção e cuidado, buscando entender a fundo
-                            as necessidades individuais para construir a melhor estratégia jurídica.</p>
+                        <p class="italic text-base">Cada caso é tratado com a máxima atenção e cuidado, buscando
+                            entender a fundo as necessidades individuais para construir a melhor estratégia jurídica.
+                        </p>
                     </div>
                     <div class="p-8 rounded-lg"
                         style="background-color: var(--cor-bege-claro); border-left: 4px solid var(--cor-dourado);">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Ética e Transparência</h3>
-                        <p class="italic">Acredito em uma relação de confiança mútua, mantendo o cliente sempre
-                            informado sobre cada etapa do processo com clareza, honestidade e sem juridiquês.</p>
+                        <p class="italic text-base">Acredito em uma relação de confiança mútua, mantendo o cliente
+                            sempre informado sobre cada etapa do processo com clareza, honestidade e sem juridiquês.</p>
                     </div>
                 </div>
             </div>
@@ -433,12 +439,13 @@
         <!-- Contato Section -->
         <section id="contato" class="py-20" style="background-color: var(--cor-bege-claro);">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">Entre em Contato</h2>
-                <p class="section-subtitle">Vamos conversar sobre como posso ajudá-lo. Envie uma mensagem ou utilize um
-                    dos canais abaixo.</p>
+                <h2 class="section-title text-3xl sm:text-4xl">Entre em Contato</h2>
+                <p class="section-subtitle text-base md:text-lg">Vamos conversar sobre como posso ajudá-lo. Envie uma
+                    mensagem ou utilize um dos canais abaixo.</p>
 
                 <!-- Canais de Contato -->
-                <div class="max-w-xl mx-auto mb-10 flex flex-col sm:flex-row justify-center gap-8">
+                <div
+                    class="max-w-xl mx-auto mb-10 flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8">
                     <a href="https://wa.me/5587981620121" target="_blank"
                         class="flex items-center gap-3 text-lg font-semibold hover:text-[var(--cor-dourado)] transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -461,18 +468,18 @@
 
                 <form class="max-w-xl mx-auto p-8 rounded-lg shadow-md"
                     style="background-color: var(--cor-bege-fundo);">
-                    <div class="mb-4"><label for="name" class="block text-sm font-bold mb-2">Nome</label><input
+                    <div class="mb-4"><label for="name" class="block text-base font-bold mb-2">Nome</label><input
                             type="text" id="name" name="name"
                             class="shadow-sm appearance-none border rounded w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2"
                             style="background-color: var(--cor-bege-claro); border-color: #d1c7b8; --tw-ring-color: var(--cor-dourado);"
                             required></div>
-                    <div class="mb-4"><label for="email" class="block text-sm font-bold mb-2">Email</label><input
+                    <div class="mb-4"><label for="email" class="block text-base font-bold mb-2">Email</label><input
                             type="email" id="email" name="email"
                             class="shadow-sm appearance-none border rounded w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2"
                             style="background-color: var(--cor-bege-claro); border-color: #d1c7b8; --tw-ring-color: var(--cor-dourado);"
                             required></div>
                     <div class="mb-6"><label for="message"
-                            class="block text-sm font-bold mb-2">Mensagem</label><textarea id="message" name="message"
+                            class="block text-base font-bold mb-2">Mensagem</label><textarea id="message" name="message"
                             rows="5"
                             class="shadow-sm appearance-none border rounded w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2"
                             style="background-color: var(--cor-bege-claro); border-color: #d1c7b8; --tw-ring-color: var(--cor-dourado);"
@@ -530,21 +537,75 @@
                 }
             });
 
-            // Lógica da Linha do Tempo Interativa
+            // Lógica da Linha do Tempo Interativa (Mouse e Touch)
             const timelineContainer = document.querySelector('.timeline-container');
             if (timelineContainer) {
                 const timelineTrack = timelineContainer.querySelector('.timeline-track');
-                timelineContainer.addEventListener('mousemove', function (e) {
-                    if (!timelineTrack || !timelineContainer) return;
+                let isDragging = false;
+                let startX;
+                let startTranslate;
+
+                const getTranslateX = () => {
+                    const style = window.getComputedStyle(timelineTrack);
+                    const matrix = new DOMMatrixReadOnly(style.transform);
+                    return matrix.m41;
+                };
+
+                const setTranslateX = (x) => {
+                    timelineTrack.style.transform = `translateX(${x}px)`;
+                };
+
+                const startDrag = (clientX) => {
+                    isDragging = true;
+                    startX = clientX;
+                    startTranslate = getTranslateX();
+                    timelineTrack.style.transition = 'none'; // Remove transição durante o arrasto
+                };
+
+                const onDrag = (clientX) => {
+                    if (!isDragging) return;
+                    const walk = clientX - startX;
+                    setTranslateX(startTranslate + walk);
+                };
+
+                const endDrag = () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    timelineTrack.style.transition = 'transform 0.5s ease-out'; // Readiciona a transição
+
+                    // Lógica de limites
+                    const currentTranslate = getTranslateX();
                     const trackWidth = timelineTrack.scrollWidth;
                     const containerWidth = timelineContainer.offsetWidth;
                     const maxScroll = trackWidth - containerWidth;
-                    if (maxScroll <= 0) return;
-                    const mouseX = e.pageX - timelineContainer.getBoundingClientRect().left;
-                    const scrollPercentage = mouseX / containerWidth;
-                    const newX = -maxScroll * scrollPercentage;
-                    timelineTrack.style.transform = `translateX(${newX}px)`;
+
+                    if (currentTranslate > 0) {
+                        setTranslateX(0);
+                    } else if (currentTranslate < -maxScroll) {
+                        setTranslateX(-maxScroll);
+                    }
+                };
+
+                // Eventos de Mouse
+                timelineContainer.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    startDrag(e.pageX);
                 });
+                timelineContainer.addEventListener('mousemove', (e) => {
+                    e.preventDefault();
+                    onDrag(e.pageX);
+                });
+                timelineContainer.addEventListener('mouseup', endDrag);
+                timelineContainer.addEventListener('mouseleave', endDrag);
+
+                // Eventos de Touch
+                timelineContainer.addEventListener('touchstart', (e) => {
+                    startDrag(e.touches[0].clientX);
+                }, { passive: true });
+                timelineContainer.addEventListener('touchmove', (e) => {
+                    onDrag(e.touches[0].clientX);
+                });
+                timelineContainer.addEventListener('touchend', endDrag);
             }
         });
     </script>
