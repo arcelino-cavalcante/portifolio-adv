@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
@@ -55,15 +55,13 @@
 
         /* Hero Parallax Section */
         .parallax-hero {
-            /* Substitua 'advogada-hero.jpg' pela sua imagem principal */
-            background-image: url("imagens/image.png");
+            background-image: url(imagens/image.png);
             min-height: 100vh;
         }
 
         /* Second Parallax Section */
         .parallax-quote {
-            /* Imagem temática de advocacia */
-            background-image: url("imagens/justica-quote.jpg");
+            background-image: url(imagens/perfil.jpg);
             min-height: 50vh;
         }
 
@@ -138,117 +136,59 @@
             transform: scale(1.05);
         }
 
-        /* --- Estilos da Linha do Tempo Interativa --- */
-        .timeline-container {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            cursor: grab;
+        /* --- Estilos da Seção de Carreira --- */
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
-        .timeline-container:active {
-            cursor: grabbing;
-        }
-
-        .timeline-container::before,
-        .timeline-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 5rem;
-            /* Reduzido para telas menores */
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .timeline-container::before {
-            left: 0;
-            background: linear-gradient(to right, var(--cor-bege-fundo), rgba(239, 235, 224, 0));
-        }
-
-        .timeline-container::after {
-            right: 0;
-            background: linear-gradient(to left, var(--cor-bege-fundo), rgba(239, 235, 224, 0));
-        }
-
-        .timeline-track {
-            display: flex;
-            width: max-content;
-            transition: transform 0.5s ease-out;
-            will-change: transform;
-        }
-
-        .timeline-item {
-            width: 300px;
-            flex-shrink: 0;
-            padding: 2rem 1.5rem;
-            position: relative;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: #d1c7b8;
-            top: 2rem;
-            left: 0;
-            transform: translateY(-50%);
-            z-index: 0;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: 2rem;
-            left: 1.5rem;
-            transform: translate(-50%, -50%);
-            width: 18px;
-            height: 18px;
-            background-color: var(--cor-dourado);
-            border-radius: 50%;
-            border: 4px solid var(--cor-bege-claro);
-            z-index: 1;
-        }
-
-        .timeline-year {
-            font-family: 'Lora', serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--cor-vinho);
-            position: relative;
-            padding-left: 25px;
-            line-height: 1;
-        }
-
-        .timeline-content {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: var(--cor-bege-claro);
+        .career-item {
+            background-color: var(--cor-bege-claro);
             border-radius: 8px;
+            padding: 2rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            position: relative;
-            min-height: 170px;
-            /* Garante altura mínima uniforme */
-            display: flex;
-            /* Habilita flexbox */
-            flex-direction: column;
-            /* Organiza conteúdo em coluna */
-            justify-content: center;
-            /* Centraliza o conteúdo verticalmente */
+            border-left: 4px solid var(--cor-dourado);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .timeline-content h3 {
+        .career-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .career-item h3 {
             color: var(--cor-vinho);
-            font-size: 1.25rem;
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
 
-        .timeline-content p {
+        .career-item p {
             font-size: 1rem;
-            /* Aumentado para melhor leitura */
             color: var(--cor-texto-escuro);
+            margin-bottom: 0.25rem;
+        }
+
+        .career-item .period {
+            font-weight: 600;
+            color: var(--cor-dourado);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- Media Queries para Responsividade --- */
+        @media (max-width: 1024px) {
+            .parallax-section {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .contact-link {
+                word-break: break-word;
+            }
         }
     </style>
 </head>
@@ -265,11 +205,14 @@
             <nav class="hidden md:flex space-x-8">
                 <a href="#sobre" class="nav-link font-semibold" style="color: var(--cor-texto-escuro);">Sobre</a>
                 <a href="#formacao" class="nav-link font-semibold" style="color: var(--cor-texto-escuro);">Formação</a>
+                <a href="#experiencia" class="nav-link font-semibold"
+                    style="color: var(--cor-texto-escuro);">Experiência</a>
                 <a href="#atuacao" class="nav-link font-semibold" style="color: var(--cor-texto-escuro);">Atuação</a>
                 <a href="#filosofia" class="nav-link font-semibold"
                     style="color: var(--cor-texto-escuro);">Filosofia</a>
                 <a href="#contato" class="nav-link font-semibold" style="color: var(--cor-texto-escuro);">Contato</a>
             </nav>
+            <!-- Botão do Menu Mobile -->
             <button id="mobile-menu-button" class="md:hidden focus:outline-none" style="color: var(--cor-vinho);">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
@@ -278,10 +221,11 @@
                 </svg>
             </button>
         </div>
-        <!-- Mobile Menu -->
+        <!-- Menu Mobile -->
         <div id="mobile-menu" class="hidden md:hidden" style="background-color: var(--cor-bege-claro);">
             <a href="#sobre" class="block py-2 px-4 text-sm hover:bg-gray-200">Sobre</a>
             <a href="#formacao" class="block py-2 px-4 text-sm hover:bg-gray-200">Formação</a>
+            <a href="#experiencia" class="block py-2 px-4 text-sm hover:bg-gray-200">Experiência</a>
             <a href="#atuacao" class="block py-2 px-4 text-sm hover:bg-gray-200">Áreas de Atuação</a>
             <a href="#filosofia" class="block py-2 px-4 text-sm hover:bg-gray-200">Filosofia</a>
             <a href="#contato" class="block py-2 px-4 text-sm hover:bg-gray-200">Contato</a>
@@ -292,115 +236,118 @@
     <section class="parallax-section parallax-hero flex items-center justify-center text-white">
         <div class="parallax-overlay"></div>
         <div class="text-center z-10 p-4">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-wider">Ana Rute Cordeiro</h1>
-            <p class="text-2xl md:text-3xl font-light text-gray-200">Advocacia com Paixão e Compromisso</p>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-4 tracking-wider">Ana Rute Cordeiro</h1>
+            <p class="text-xl sm:text-2xl lg:text-3xl font-light text-gray-200">Advocacia com Paixão e Compromisso</p>
+            <p class="text-md sm:text-lg lg:text-xl font-light text-gray-200 mt-2">OAB/PE 66.286</p>
         </div>
     </section>
 
     <!-- Main Content -->
     <main>
         <!-- Sobre Section -->
-        <section id="sobre" class="py-20" style="background-color: var(--cor-bege-claro);">
+        <section id="sobre" class="py-16 lg:py-20" style="background-color: var(--cor-bege-claro);">
             <div class="container mx-auto px-6">
-                <h2 class="section-title text-3xl sm:text-4xl">Sobre Mim</h2>
+                <h2 class="section-title text-3xl md:text-4xl">Sobre Mim</h2>
                 <p class="section-subtitle text-base md:text-lg">Uma nova perspectiva na advocacia, focada em soluções
                     modernas e eficientes.</p>
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/3">
-                        <!-- Substitua 'advogada-retrato.jpg' pela sua foto de perfil -->
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    <div class="md:w-1/3 w-full max-w-sm">
                         <img src="imagens/perfil.jpg" alt="Retrato da Advogada Ana Rute Cordeiro"
-                            class="rounded-lg shadow-2xl w-full">
+                            class="rounded-lg shadow-2xl w-full h-auto object-cover">
                     </div>
                     <div class="md:w-2/3 text-base md:text-lg">
-                        <p class="mb-4">Recém-formada em Direito, sou uma advogada apaixonada e dedicada, comprometida
-                            em oferecer uma advocacia moderna e acessível. Minha abordagem é pautada pela energia e pelo
-                            conhecimento atualizado das mais recentes teses e jurisprudências.</p>
-                        <p class="mb-4">Integrando a equipe de um conceituado escritório de advocacia, alio o vigor da
-                            minha recente formação com a sólida experiência da firma para defender os interesses dos
-                            meus clientes com máxima diligência, ética e combatividade.</p>
-                        <p>Acredito em uma advocacia humanizada, onde cada cliente recebe atenção plena e soluções
-                            jurídicas personalizadas para seus desafios. Meu objetivo é ser sua maior aliada na busca
-                            por justiça.</p>
+                        <p class="mb-4">Sou uma advogada dedicada e comprometida em oferecer uma advocacia
+                            moderna, acessível e eficaz. Minha atuação é pautada pela energia, seriedade e
+                            constante atualização quanto às mais recentes teses e jurisprudências, sempre com
+                            foco em resultados concretos.</p>
+                        <p class="mb-4">Com experiência nas áreas do Direito Previdenciário, Cível e Trabalhista,
+                            busco unir conhecimento técnico e sensibilidade para atender cada cliente de forma
+                            estratégica e personalizada. Atuo com ética, diligência e combatividade, priorizando
+                            soluções que respeitem o tempo e as necessidades de quem confia em meu
+                            trabalho.</p>
+                        <p>Acredito em uma advocacia humanizada, onde cada pessoa é ouvida com
+                            atenção e orientada com clareza e responsabilidade. Meu objetivo é ser sua maior
+                            aliada na busca por justiça, oferecendo não apenas respostas jurídicas, mas apoio
+                            real diante dos desafios que a vida impõe.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Seção da Linha do Tempo Acadêmica -->
-        <section id="formacao" class="py-20">
-            <div class="container mx-auto">
-                <h2 class="section-title text-3xl sm:text-4xl">Formação Acadêmica</h2>
-                <p class="section-subtitle px-6 text-base md:text-lg">Uma base sólida para uma prática jurídica de
-                    excelência.</p>
-                <div class="timeline-container">
-                    <div class="timeline-track">
-                        <!-- Itens da Linha do Tempo (simplificados) -->
-                        <div class="timeline-item">
-                            <div class="timeline-year">2023</div>
-                            <div class="timeline-content">
-                                <h3>Graduação em Direito</h3>
-                                <p>Universidade (substituir pelo nome)</p>
-                            </div>
+        <!-- Seção de Formação e Experiência -->
+        <section id="formacao" class="py-16 lg:py-20 career-section">
+            <div class="container mx-auto px-6">
+
+                <!-- Formação Acadêmica -->
+                <div class="mb-16">
+                    <h2 class="section-title text-3xl md:text-4xl">Formação Acadêmica</h2>
+                    <p class="section-subtitle text-base md:text-lg">Uma base sólida para uma prática jurídica de
+                        excelência.</p>
+                    <div class="career-grid">
+                        <div class="career-item">
+                            <span class="period">Formação</span>
+                            <h3>Bacharel em Direito</h3>
+                            <p>(formação latu sensu)</p>
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">2024</div>
-                            <div class="timeline-content">
-                                <h3>Aprovação na OAB</h3>
-                                <p>Início da jornada profissional</p>
-                            </div>
+                        <div class="career-item">
+                            <span class="period">2024 - Atualmente</span>
+                            <h3>Especialização em Direito Trabalhista e Previdenciário</h3>
+                            <p>AESGA</p>
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">Atual</div>
-                            <div class="timeline-content">
-                                <h3>Advogada Associada</h3>
-                                <p>Atuação em escritório de advocacia</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">Futuro</div>
-                            <div class="timeline-content">
-                                <h3>Pós-Graduação</h3>
-                                <p>Busca por especialização contínua</p>
-                            </div>
+                        <div class="career-item">
+                            <span class="period">2025 - Atualmente</span>
+                            <h3>Especialização em Processo Administrativo Previdenciário</h3>
                         </div>
                     </div>
                 </div>
+
+                <!-- Experiência Profissional -->
+                <div id="experiencia">
+                    <h2 class="section-title text-3xl md:text-4xl">Experiência Profissional</h2>
+                    <p class="section-subtitle text-base md:text-lg">Trajetória e prática em diversas áreas do Direito.
+                    </p>
+                    <div class="career-grid">
+                        <div class="career-item">
+                            <span class="period">2021 - 2023</span>
+                            <h3>Estagiária de Ensino Superior</h3>
+                            <p>INSS/Garanhuns</p>
+                        </div>
+                        <div class="career-item">
+                            <span class="period">2023</span>
+                            <h3>Auxiliar de Cartório</h3>
+                            <p>Cartório de Notas e Protestos</p>
+                        </div>
+                        <div class="career-item">
+                            <span class="period">2025</span>
+                            <h3>Advogada Júnior</h3>
+                            <p>Defensoria Pública de Pernambuco (Estágio de Pós Graduação)</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <!-- Áreas de Atuação Section -->
-        <section id="atuacao" class="py-20" style="background-color: var(--cor-bege-claro);">
+        <section id="atuacao" class="py-16 lg:py-20" style="background-color: var(--cor-bege-claro);">
             <div class="container mx-auto px-6">
-                <h2 class="section-title text-3xl sm:text-4xl">Áreas de Atuação</h2>
+                <h2 class="section-title text-3xl md:text-4xl">Áreas de Atuação</h2>
                 <p class="section-subtitle text-base md:text-lg">Assessoria jurídica especializada, com o suporte de uma
                     equipe experiente.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="card p-8 rounded-lg shadow-lg text-center">
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito Civil</h3>
-                        <p class="text-base">Contratos, responsabilidade civil, família, sucessões e questões
-                            imobiliárias.</p>
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito Previdenciário</h3>
+                        <p class="text-base">Aposentadorias, pensões, auxílios e outros benefícios previdenciários.</p>
                     </div>
                     <div class="card p-8 rounded-lg shadow-lg text-center">
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito Empresarial</h3>
-                        <p class="text-base">Consultoria, contratos sociais, fusões e aquisições.</p>
+                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito Cível</h3>
+                        <p class="text-base">Contratos, responsabilidade civil, família, sucessões e questões
+                            imobiliárias.</p>
                     </div>
                     <div class="card p-8 rounded-lg shadow-lg text-center">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito do Trabalho</h3>
                         <p class="text-base">Defesa dos direitos de empregados e empregadores, consultoria e
                             contencioso.</p>
-                    </div>
-                    <div class="card p-8 rounded-lg shadow-lg text-center">
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito Tributário</h3>
-                        <p class="text-base">Planejamento, defesa em execuções fiscais e recuperação de créditos.</p>
-                    </div>
-                    <div class="card p-8 rounded-lg shadow-lg text-center">
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Direito do Consumidor</h3>
-                        <p class="text-base">Atuação em casos de práticas abusivas, produtos com defeito e serviços.</p>
-                    </div>
-                    <div class="card p-8 rounded-lg shadow-lg text-center">
-                        <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Consultoria Estratégica
-                        </h3>
-                        <p class="text-base">Análise de riscos e pareceres jurídicos para decisões seguras.</p>
                     </div>
                 </div>
             </div>
@@ -410,17 +357,17 @@
         <section class="parallax-section parallax-quote flex items-center justify-center text-white">
             <div class="parallax-overlay"></div>
             <div class="text-center z-10 p-4 max-w-4xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-light italic">"A justiça consiste em dar a cada um o que é seu."
+                <h2 class="text-2xl md:text-4xl font-light italic">"A justiça consiste em dar a cada um o que é seu."
                 </h2>
-                <p class="text-xl font-semibold mt-2">- Ulpiano</p>
+                <p class="text-lg md:text-xl font-semibold mt-2">- Ulpiano</p>
             </div>
         </section>
 
         <!-- Filosofia de Trabalho Section -->
-        <section id="filosofia" class="py-20">
+        <section id="filosofia" class="py-16 lg:py-20">
             <div class="container mx-auto px-6">
-                <h2 class="section-title text-3xl sm:text-4xl">Filosofia de Trabalho</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <h2 class="section-title text-3xl md:text-4xl">Filosofia de Trabalho</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                     <div class="p-8 rounded-lg"
                         style="background-color: var(--cor-bege-claro); border-left: 4px solid var(--cor-dourado);">
                         <h3 class="text-2xl font-bold mb-4" style="color: var(--cor-vinho);">Dedicação Total ao Cliente
@@ -440,55 +387,80 @@
         </section>
 
         <!-- Contato Section -->
-        <section id="contato" class="py-20" style="background-color: var(--cor-bege-claro);">
+        <section id="contato" class="py-16 lg:py-20" style="background-color: var(--cor-bege-claro);">
             <div class="container mx-auto px-6">
-                <h2 class="section-title text-3xl sm:text-4xl">Entre em Contato</h2>
-                <p class="section-subtitle text-base md:text-lg">Vamos conversar sobre como posso ajudá-lo. Envie uma
-                    mensagem ou utilize um dos canais abaixo.</p>
+                <h2 class="section-title text-3xl md:text-4xl">Entre em Contato</h2>
+                <p class="section-subtitle text-base md:text-lg">Preencha o formulário para enviar uma mensagem
+                    diretamente para o meu WhatsApp.</p>
 
                 <!-- Canais de Contato -->
                 <div
-                    class="max-w-xl mx-auto mb-10 flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8">
+                    class="max-w-3xl mx-auto mb-12 flex flex-col sm:flex-row flex-wrap justify-center items-center gap-6 sm:gap-8">
                     <a href="https://wa.me/5587981620121" target="_blank"
-                        class="flex items-center gap-3 text-lg font-semibold hover:text-[var(--cor-dourado)] transition-colors">
+                        class="contact-link flex items-center gap-3 text-sm sm:text-lg font-semibold hover:text-[var(--cor-dourado)] transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="currentColor">
+                            fill="currentColor" class="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6">
                             <path
                                 d="M19.11 4.9C17.22 3 14.76 2 12 2C6.48 2 2 6.48 2 12C2 13.77 2.5 15.44 3.34 16.9L2.05 22L7.1 20.66C8.56 21.5 10.23 22 12 22H12.01C17.52 22 21.99 17.52 21.99 12C21.99 9.24 21 6.78 19.11 4.9ZM12 20.01C10.37 20.01 8.8 19.54 7.47 18.65L7.18 18.47L4.54 19.11L5.19 16.54L4.99 16.26C4.19 14.93 3.75 13.47 3.75 12C3.75 7.44 7.44 3.75 12 3.75C14.21 3.75 16.2 4.63 17.79 6.22C19.38 7.81 20.25 9.8 20.25 12C20.25 16.56 16.56 20.25 12.01 20.25L12 20.01ZM16.54 14.99C16.3 14.87 15.2 14.38 14.98 14.3C14.75 14.21 14.58 14.18 14.42 14.42C14.25 14.66 13.72 15.29 13.55 15.47C13.38 15.64 13.22 15.67 12.97 15.55C12.72 15.42 11.66 15.08 10.38 13.98C9.33 13.08 8.69 12.08 8.53 11.84C8.37 11.6 8.48 11.48 8.6 11.36C8.71 11.25 8.87 11.06 9.03 10.9C9.18 10.74 9.24 10.62 9.33 10.46C9.42 10.3 9.37 10.17 9.31 10.05C9.25 9.93 8.69 8.54 8.47 8C8.24 7.46 8.02 7.55 7.85 7.54H7.4C7.17 7.54 6.95 7.59 6.76 7.83C6.57 8.07 6 8.69 6 10.15C6 11.61 6.77 13.01 6.93 13.22C7.09 13.42 8.69 15.93 11.25 16.96C11.83 17.2 12.28 17.34 12.64 17.43C13.16 17.55 13.68 17.52 14.05 17.43C14.48 17.32 15.53 16.73 15.75 16.13C15.97 15.53 15.97 15.04 15.9 14.92C15.83 14.8 15.61 14.74 15.36 14.62" />
                         </svg>
-                        (87) 98162-0121
+                        <span class="whitespace-nowrap">(87) 98162-0121</span>
                     </a>
-                    <a href="mailto:anarutecordeiro.adv"
-                        class="flex items-center gap-3 text-lg font-semibold hover:text-[var(--cor-dourado)] transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="currentColor">
+                    <a href="mailto:anarutecordeiroadv@gmail.com"
+                        class="contact-link flex items-center gap-3 text-sm sm:text-lg font-semibold hover:text-[var(--cor-dourado)] transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24"
+                            fill="currentColor" class="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6">
                             <path
                                 d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" />
                         </svg>
-                        anarutecordeiro.adv
+                        <span>anarutecordeiroadv@gmail.com</span>
+                    </a>
+                    <a href="https://www.instagram.com/anarutecordeiro.adv/" target="_blank"
+                        class="contact-link flex items-center gap-3 text-sm sm:text-lg font-semibold hover:text-[var(--cor-dourado)] transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="currentColor" class="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+                            </path>
+                        </svg>
+                        <span>@anarutecordeiro.adv</span>
                     </a>
                 </div>
 
-                <form class="max-w-xl mx-auto p-8 rounded-lg shadow-md"
+                <form id="contact-form" class="max-w-xl mx-auto p-6 sm:p-8 rounded-lg shadow-md"
                     style="background-color: var(--cor-bege-fundo);">
-                    <div class="mb-4"><label for="name" class="block text-base font-bold mb-2">Nome</label><input
-                            type="text" id="name" name="name"
+                    <div class="mb-4">
+                        <label for="name" class="block text-base font-bold mb-2">Seu Nome</label>
+                        <input type="text" id="name" name="name" placeholder="Digite seu nome completo"
                             class="shadow-sm appearance-none border rounded w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2"
                             style="background-color: var(--cor-bege-claro); border-color: #d1c7b8; --tw-ring-color: var(--cor-dourado);"
-                            required></div>
-                    <div class="mb-4"><label for="email" class="block text-base font-bold mb-2">Email</label><input
-                            type="email" id="email" name="email"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-base font-bold mb-2">Seu Email (Opcional)</label>
+                        <input type="email" id="email" name="email" placeholder="Para um retorno alternativo"
+                            class="shadow-sm appearance-none border rounded w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2"
+                            style="background-color: var(--cor-bege-claro); border-color: #d1c7b8; --tw-ring-color: var(--cor-dourado);">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-base font-bold mb-2">Mensagem</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Descreva sua dúvida ou caso aqui..."
                             class="shadow-sm appearance-none border rounded w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2"
                             style="background-color: var(--cor-bege-claro); border-color: #d1c7b8; --tw-ring-color: var(--cor-dourado);"
-                            required></div>
-                    <div class="mb-6"><label for="message"
-                            class="block text-base font-bold mb-2">Mensagem</label><textarea id="message" name="message"
-                            rows="5"
-                            class="shadow-sm appearance-none border rounded w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2"
-                            style="background-color: var(--cor-bege-claro); border-color: #d1c7b8; --tw-ring-color: var(--cor-dourado);"
-                            required></textarea></div>
-                    <div class="text-center"><button type="submit"
-                            class="cta-button py-3 px-8 rounded-full text-lg">Enviar Mensagem</button></div>
+                            required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit"
+                            class="cta-button w-full py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg flex items-center justify-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path
+                                    d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.1-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
+                            </svg>
+                            <span>Enviar via WhatsApp</span>
+                        </button>
+                    </div>
+                    <p id="form-status" class="text-center text-sm mt-4 text-gray-600">Ao clicar, você será
+                        redirecionado para o WhatsApp.</p>
                 </form>
             </div>
         </section>
@@ -499,6 +471,7 @@
     <footer class="text-white py-10" style="background-color: var(--cor-vinho);">
         <div class="container mx-auto px-6 text-center">
             <p>&copy; 2024 Dr.ª Ana Rute Cordeiro. Todos os direitos reservados.</p>
+            <p class="text-base md:text-lg font-light text-gray-200 mt-2">OAB/PE 66.286</p>
             <p class="text-sm text-gray-300 mt-2">Desenvolvido com excelência</p>
         </div>
     </footer>
@@ -508,108 +481,62 @@
             const navbar = document.getElementById('navbar');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
+            const contactForm = document.getElementById('contact-form');
 
-            // Toggle mobile menu
+            // Função para alternar o menu mobile
             mobileMenuButton.addEventListener('click', function () {
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // Smooth scroll for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
+            // Função para fechar o menu mobile ao clicar em um link
+            document.querySelectorAll('#mobile-menu a, nav a').forEach(link => {
+                link.addEventListener('click', () => {
                     if (!mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
                     }
                 });
             });
 
-            // Change navbar style on scroll
+            // Animação da barra de navegação ao rolar a página
             window.addEventListener('scroll', function () {
                 if (window.scrollY > 50) {
-                    navbar.classList.add('py-2', 'shadow-lg');
-                    navbar.classList.remove('py-3');
+                    navbar.style.backgroundColor = 'rgba(243, 234, 211, 0.95)';
+                    navbar.classList.add('shadow-lg');
                 } else {
-                    navbar.classList.remove('py-2', 'shadow-lg');
-                    navbar.classList.add('py-3');
+                    navbar.style.backgroundColor = 'rgba(243, 234, 211, 0.8)';
+                    navbar.classList.remove('shadow-lg');
                 }
             });
 
-            // Lógica da Linha do Tempo Interativa (Mouse e Touch)
-            const timelineContainer = document.querySelector('.timeline-container');
-            if (timelineContainer) {
-                const timelineTrack = timelineContainer.querySelector('.timeline-track');
-                let isDragging = false;
-                let startX;
-                let startTranslate;
+            // --- Lógica do Formulário para WhatsApp ---
+            contactForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Previne o comportamento padrão do formulário.
 
-                const getTranslateX = () => {
-                    const style = window.getComputedStyle(timelineTrack);
-                    const matrix = new DOMMatrixReadOnly(style.transform);
-                    return matrix.m41;
-                };
+                // Substitua pelo número de WhatsApp da advogada
+                // Formato: 55 (código do país) + DDD + número (sem espaços ou traços)
+                const phoneNumber = '5587981620121';
 
-                const setTranslateX = (x) => {
-                    timelineTrack.style.transform = `translateX(${x}px)`;
-                };
+                // Pega os valores dos campos do formulário
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
 
-                const startDrag = (clientX) => {
-                    isDragging = true;
-                    startX = clientX;
-                    startTranslate = getTranslateX();
-                    timelineTrack.style.transition = 'none'; // Remove transição durante o arrasto
-                };
+                // Formata a mensagem para o WhatsApp
+                let whatsappMessage = `Olá! Meu nome é *${name}*.\n\n`;
+                if (email) {
+                    whatsappMessage += `Meu e-mail para contato é: *${email}*.\n\n`;
+                }
+                whatsappMessage += `*Mensagem:*\n${message}`;
 
-                const onDrag = (clientX) => {
-                    if (!isDragging) return;
-                    const walk = clientX - startX;
-                    setTranslateX(startTranslate + walk);
-                };
+                // Codifica a mensagem para ser usada em uma URL
+                const encodedMessage = encodeURIComponent(whatsappMessage);
 
-                const endDrag = () => {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    timelineTrack.style.transition = 'transform 0.5s ease-out'; // Readiciona a transição
+                // Cria o link do WhatsApp
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-                    // Lógica de limites
-                    const currentTranslate = getTranslateX();
-                    const trackWidth = timelineTrack.scrollWidth;
-                    const containerWidth = timelineContainer.offsetWidth;
-                    const maxScroll = trackWidth - containerWidth;
-
-                    if (currentTranslate > 0) {
-                        setTranslateX(0);
-                    } else if (currentTranslate < -maxScroll) {
-                        setTranslateX(-maxScroll);
-                    }
-                };
-
-                // Eventos de Mouse
-                timelineContainer.addEventListener('mousedown', (e) => {
-                    e.preventDefault();
-                    startDrag(e.pageX);
-                });
-                timelineContainer.addEventListener('mousemove', (e) => {
-                    e.preventDefault();
-                    onDrag(e.pageX);
-                });
-                timelineContainer.addEventListener('mouseup', endDrag);
-                timelineContainer.addEventListener('mouseleave', endDrag);
-
-                // Eventos de Touch
-                timelineContainer.addEventListener('touchstart', (e) => {
-                    startDrag(e.touches[0].clientX);
-                }, { passive: true });
-                timelineContainer.addEventListener('touchmove', (e) => {
-                    onDrag(e.touches[0].clientX);
-                });
-                timelineContainer.addEventListener('touchend', endDrag);
-            }
+                // Abre o link em uma nova aba
+                window.open(whatsappUrl, '_blank');
+            });
         });
     </script>
 
